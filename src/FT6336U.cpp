@@ -35,13 +35,17 @@ void FT6336U::begin(void) {
     Wire.begin();
 #endif
     // Int Pin Configuration
-    pinMode(int_n, INPUT);
+    if (int_n >= 0) {
+        pinMode(int_n, INPUT);
+    }
     // Reset Pin Configuration
-    pinMode(rst_n, OUTPUT);
-    digitalWrite(rst_n, LOW);
-    delay(10);
-    digitalWrite(rst_n, HIGH);
-    delay(500);
+    if (rst_n >= 0) {
+        pinMode(rst_n, OUTPUT);
+        digitalWrite(rst_n, LOW);
+        delay(10);
+        digitalWrite(rst_n, HIGH);
+        delay(500);
+    }
 }
 uint8_t FT6336U::read_device_mode(void) {
     return (readByte(FT6336U_ADDR_DEVICE_MODE) & 0x70) >> 4;
