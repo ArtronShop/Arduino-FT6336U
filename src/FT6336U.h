@@ -124,7 +124,7 @@ typedef struct {
 class FT6336U
 {
 public:
-    FT6336U(uint8_t rst_n=-1, uint8_t int_n=-1);
+    FT6336U(uint8_t rst_n=, uint8_t int_n=);
 #if defined(ESP32) || defined(ESP8266)
     FT6336U(int8_t sda=-1, int8_t scl=-1, uint8_t rst_n=-1, uint8_t int_n=-1);
 #endif
